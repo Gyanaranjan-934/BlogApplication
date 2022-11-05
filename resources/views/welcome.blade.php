@@ -1,31 +1,33 @@
 @extends('layout')
-@section('header')
-    <!-- header -->
-    <header class="header" style=" background-image: url({{asset("images/photography.jpg")}});">
-        <div class="header-text">
-          <h1>Alphayo Blog</h1>
-          <h4>Dashboard of verified news...</h4>
-        </div>
-        <div class="overlay"></div>
-      </header>
-@endsection
 @section('main')
     <!-- main -->
-    <main class="container">
-        <h2 class="header-title">Latest Blog Posts</h2>
-        <section class="cards-blog latest-blog">
-        @foreach ($posts as $post)
-        <div class="card-blog-content">
-          <img src="{{asset($post->imagePath)}}" alt="" />
-          <p>
-            {{$post->created_at->diffForHumans()}}
-            <span>Written By {{$post->user->name}}</span>
-          </p>
-          <h4>
-            <a href="{{route('blog.show',$post)}}">{{$post->title}}</a>
-          </h4>
-        </div>
-        @endforeach
-        </section>
+    <div class="container-fluid">
+      <main class="tm-main">
+        <h1>Explore the World with the Blogs</h1>
+        <div class="row tm-row">
+      @forelse ($posts as $post)
+        <article class="col-12 col-md-6 tm-post">
+          <hr class="tm-hr-primary">
+          <a href="{{route('blog.show',$post)}}" class="effect-lily tm-post-link tm-pt-60">
+              <div class="tm-post-link-inner">
+                  <img src="{{asset($post->imagePath)}}" alt="Image" class="img-fluid">                            
+              </div>
+              <span class="position-absolute tm-new-badge">New</span>
+              <a class="tm-pt-30 tm-color-primary tm-post-title" href="{{route('blog.show',$post)}}">{{$post->title}}</a>
+          </a>
+          <div class="d-flex justify-content-between tm-pt-45">
+              <span class="tm-color-primary">{{$post->created_at->diffForHumans()}}</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+              {{-- <span>36 comments</span> --}}
+              <span>Written By {{$post->user->name}}</span>
+          </div>
+      </article>
+      @empty
+      <p>No articles published</p>
+      @endforelse
+    </div>
       </main>
+    </div>
 @endsection

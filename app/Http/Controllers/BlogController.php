@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 
+
 class BlogController extends Controller
 {
     public function __construct(){
@@ -15,18 +16,23 @@ class BlogController extends Controller
     }
     public function index(Request $request){
         if ($request->search) {
+            //"select * from `posts` where `title` like ? or `body` like ?" (for the search-bar searching)
             $posts = Post::where('title','like','%'.$request->search.'%')->orWhere('body','like','%'.$request->search.'%')->latest()->paginate(4);
         }elseif($request->category){
+            //"select * from `posts` where `posts`.`category_id` = ? and `posts`.`category_id` is not null"
             $posts = Category::where('name',$request->category)->firstOrFail()->posts()->paginate(3)->withQueryString();
         }
         else{
-            $posts = Post::latest()->paginate(4);
+            //"select * from `posts` order by `created_at` desc" (home page)
+            $posts = Post::latest()->paginate(6);
         }
-
+        
+        //select * from `categories` order by `created_at` desc
         $categories = Category::all();
         return view('blogPosts.blog',compact('posts','categories'));
     }
     public function create(){
+        // "select * from `categories`"
         $categories = Category::all();
         return view('blogPosts.create-blog-post',compact('categories'));
     }
@@ -107,11 +113,20 @@ class BlogController extends Controller
 
     public function show(Post $post){
         $category = $post->category;
+        //"select * from `posts` where `posts`.`category_id` = ? and `posts`.`category_id` is not null and `id` != ? order by `created_at` desc"
         $relatedPosts = $category->posts()->where('id','!=',$post->id)->latest()->take(3)->get();
-        return view('blogPosts.single-blog-post',compact('post','relatedPosts'));
+        $comments = $post->comments()->latest()->paginate(1);
+        $categories = Category::all();
+        return view('blogPosts.single-blog-post',compact('post','relatedPosts','comments','categories'));
     }
     public function destroy(Post $post){
         $post->delete();
         return redirect()->back()->with('status','Deleted');
+    }
+    public function logout () {
+        //logout user
+        auth()->logout();
+        // redirect to homepage
+        return redirect('/');
     }
 }

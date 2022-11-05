@@ -4,6 +4,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +17,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 //home page
 Route::get('/', [WelcomeController::class,'index'])->name('welcome.index');
 //blog page 
@@ -43,15 +39,15 @@ Route::get('/about', function () {
 })->name('about');
 //contact page
 Route::get('/contact',[ContactController::class,'index'])->name('contact'); 
+//Category page
 Route::resource('/categories', CategoryController::class);
 
-// Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-// Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
-// Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-// Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
-// Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
-// Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
-// Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+//Comment
+Route::post('/posts/{post}/comments',[CommentsController::class,'store'])->name('comment.store');
+Route::delete('/comment/{comments}',[CommentsController::class,'destroy'])->name('commmet.destroy');
+
+//Logout
+Route::get('/logout', [BlogController::class,'logout']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
