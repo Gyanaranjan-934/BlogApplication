@@ -1,66 +1,95 @@
 @extends('layout')
-
 @section('main')
-  <!-- main -->
-  <main class="container">
-      <section id="contact-us">
-        <h1>Get in Touch!</h1>
-
-        <!-- contact info -->
-        <div class="container">
-          <div class="contact-info">
-            <div class="specific-info">
-              <i class="fas fa-home"></i>
-              <div>
-                <p class="title">4th floor, Hi Center</p>
-                <p class="subtitle">Moi Avenue</p>
-              </div>
-            </div>
-            <div class="specific-info">
-              <i class="fas fa-phone-alt"></i>
-              <div>
-                <a href="">+254 720 XXX XXX </a>
-                <br />
-                <a href="">+254 721 XXX XXX</a>
-
-                <p class="subtitle">Mon to Fri 9am-6pm</p>
-              </div>
-            </div>
-            <div class="specific-info">
-              <i class="fas fa-envelope-open-text"></i>
-              <div>
-                <a href="mailto:info@alphayo.co.ke">
-                  <p class="title">info@alphayo.co.ke</p>
-                </a>
-                <p class="subtitle">Send us your query anytime!</p>
-              </div>
-            </div>
+<div class="container-fluid">
+  <main class="tm-main">
+      <div class="row tm-row tm-mb-120">
+          <div class="col-12">
+              <h2 class="tm-color-primary tm-post-title tm-mb-60">Contact Us</h2>
           </div>
-
-          <!-- Contact Form -->
-          <div class="contact-form">
-            <form action="" method="">
-              <!-- Name -->
-              <label for="name"><span>Name</span></label>
-              <input type="text" id="name" name="name" value="" />
-
-              <!-- Email -->
-              <label for="email"><span>Email</span></label>
-              <input type="text" id="email" name="email" value="" />
-
-              <!-- Subject -->
-              <label for="subject"><span>Subject</span></label>
-              <input type="text" id="Subject" name="subject" value="" />
-
-              <!-- Message -->
-              <label for="message"><span>Message</span></label>
-              <textarea id="message" name="message"></textarea>
-
-               <!-- Button -->
-              <input type="submit" value="Submit" />
-            </form>
+          <div class="col-lg-7 tm-contact-left">
+              <form method="POST" action="" class="mb-5 ml-auto mr-0 tm-contact-form">                        
+                  <div class="form-group row mb-4">
+                      <label for="name" class="col-sm-3 col-form-label text-right tm-color-primary">Name</label>
+                      <div class="col-sm-9">
+                          <input class="form-control mr-0 ml-auto" name="name" id="name" type="text" required>                            
+                      </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                      <label for="email" class="col-sm-3 col-form-label text-right tm-color-primary">Email</label>
+                      <div class="col-sm-9">
+                          <input class="form-control mr-0 ml-auto" name="email" id="email" type="email" required>
+                      </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                      <label for="subject" class="col-sm-3 col-form-label text-right tm-color-primary">Subject</label>
+                      <div class="col-sm-9">
+                          <input class="form-control mr-0 ml-auto" name="subject" id="subject" type="text" required>
+                      </div>
+                  </div>
+                  <div class="form-group row mb-5">
+                      <label for="message" class="col-sm-3 col-form-label text-right tm-color-primary">Message</label>
+                      <div class="col-sm-9">
+                          <textarea class="form-control mr-0 ml-auto" name="message" id="message" rows="8" required></textarea>                                
+                      </div>
+                  </div>
+                  <div class="form-group row text-right">
+                      <div class="col-12">
+                          <button class="tm-btn tm-btn-primary tm-btn-small">Submit</button>                        
+                      </div>                            
+                  </div>                                
+              </form>
           </div>
-        </div>
-      </section>
-    </main>
+          <div class="col-lg-5 tm-contact-right">
+              <address class="mb-4 tm-color-gray">
+                  120 Lorem ipsum dolor sit amet,
+                  consectetur adipiscing 10550
+              </address>
+              <span class="d-block">
+                  Tel:
+                  <a href="tel:060-070-0980" class="tm-color-gray">060-070-0980</a>
+              </span>
+              <span class="mb-4 d-block">
+                  Email:
+                  <a href="mailto:info@company.com" class="tm-color-gray">info@company.com</a>
+              </span>
+              <p class="mb-5 tm-line-height-short">
+                  Maecenas eu mi eu dui cursus
+                  consequat non eu metus. Morbi ac
+                  turpis eleifend, commodo purus
+                  eget, commodo mauris.
+              </p>
+              <ul class="tm-social-links">
+                  <li class="mb-2">
+                      <a href="https://facebook.com" class="d-flex align-items-center justify-content-center">
+                          <i class="fab fa-facebook"></i>
+                      </a>
+                  </li>
+                  <li class="mb-2">
+                      <a href="https://twitter.com" class="d-flex align-items-center justify-content-center">
+                          <i class="fab fa-twitter"></i>
+                      </a>
+                  </li>
+                  <li class="mb-2">
+                      <a href="https://youtube.com" class="d-flex align-items-center justify-content-center">
+                          <i class="fab fa-youtube"></i>
+                      </a>
+                  </li>
+                  <li class="mb-2">
+                      <a href="https://instagram.com" class="d-flex align-items-center justify-content-center mr-0">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>      
+      <footer class="row tm-row">
+          <div class="col-md-6 col-12 tm-color-gray">
+              Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+          </div>
+          <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+              Copyright 2020 Xtra Blog Company Co. Ltd.
+          </div>
+      </footer>
+  </main>
+</div>
 @endsection

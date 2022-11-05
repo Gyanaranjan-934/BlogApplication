@@ -3,7 +3,8 @@
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 @endsection
 @section('main')
-<main class="container" style="background-color: #fff;">
+<div class="container-fluid">
+    <main class="tm-main">
     <section id="contact-us">
         <h1 style="padding-top: 50px;">Edit New Post!</h1>
         @include('includes.flash-message')
@@ -55,6 +56,7 @@
 
     </section>
 </main>
+</div>
 @endsection
 
 @section('scripts')

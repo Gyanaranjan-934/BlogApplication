@@ -1,77 +1,63 @@
 @extends('layout')
-
 @section('main')
-<!-- main -->
-<main class="container">
-  <h2 class="header-title">All Blog Posts</h2>
-  <div class="searchbar">
-  @include('includes.flash-message')
-    <form action="">
-      <input type="text" placeholder="Search..." name="search" />
-
-      <button type="submit">
-        <i class="fa fa-search"></i>
-      </button>
-
-    </form>
-  </div>
-  <div class="categories">
-    <ul>
-      @foreach ($categories as $category)
-        <li><a href="{{route('blog.index', ['category' => $category->name] )}}">{{$category->name}}</a></li>
-      @endforeach
-    </ul>
-  </div>
-  <section class="cards-blog latest-blog">
-
-    @forelse ($posts as $post)
-    <div class="card-blog-content">
-      @auth()
-      @if (auth()->user()->id === $post->user->id)
-      <div class="post-buttons">
-        <a href="{{route('blog.edit',$post)}}">Edit</a>
-        <form action="{{route('blog.destroy',$post)}}" method="post">
-          @csrf
-          @method('delete')
-          <input type="submit" value=" Delete">
+<div class="container-fluid">
+<main class="tm-main">
+  <!-- Search form -->
+  <div class="row tm-row">
+    @include('includes.flash-message')
+    <div class="col-12">
+        <form method="" class="form-inline tm-mb-80 tm-search-form">                
+            <input class="form-control tm-search-input" name="search" type="text" placeholder="Search..." aria-label="Search">
+            <button class="tm-search-button" type="submit">
+                <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+            </button>                                
         </form>
-      </div>
-      @endif
-      @endauth
-      <img src="{{asset($post->imagePath)}}" alt="" />
-      <p>
-        {{$post->created_at->diffForHumans()}}
+    </div>                
+</div> 
+<div class="categories">
+  <ul>
+    @foreach ($categories as $category)
+      <li><a href="{{route('blog.index', ['category' => $category->name] )}}">{{$category->name}}</a></li>
+    @endforeach
+  </ul>
+</div>
+<div class="row tm-row">
+@forelse ($posts as $post)
+  <article class="col-12 col-md-6 tm-post">
+    <hr class="tm-hr-primary">
+    <a href="{{route('blog.show',$post)}}" class="effect-lily tm-post-link tm-pt-60">
+        <div class="tm-post-link-inner">
+            <img src="{{asset($post->imagePath)}}" alt="Image" class="img-fluid">                            
+        </div>
+        <span class="position-absolute tm-new-badge">New</span>
+        <a class="tm-pt-30 tm-color-primary tm-post-title" href="{{route('blog.show',$post)}}">{{$post->title}}</a>
+    </a>
+    <div class="d-flex justify-content-between tm-pt-45">
+        <span class="tm-color-primary">{{$post->created_at->diffForHumans()}}</span>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between">
+        {{-- <span>36 comments</span> --}}
         <span>Written By {{$post->user->name}}</span>
-      </p>
-      <h4>
-        <a href="{{route('blog.show',$post)}}">{{$post->title}}</a>
-      </h4>
     </div>
-    @empty
-    <p>No posts related to your search</p>
-    @endforelse
+</article>
+@empty
+<p>No posts related to your search</p>
+@endforelse
+</div>
 
-  </section>
-  <!-- pagination -->
-  <!-- <div class="pagination" id="pagination">
-    <a href="">&laquo;</a>
-    <a class="active" href="">1</a>
-    <a href="">2</a>
-    <a href="">3</a>
-    <a href="">4</a>
-    <a href="">5</a>
-    <a href="">&raquo;</a>
-  </div> -->
-  {{ $posts->links('pagination::default') }}
-  <br>
-  <!-- Main footer -->
-  <footer class="main-footer">
-    <div>
-      <a href=""><i class="fab fa-facebook-f"></i></a>
-      <a href=""><i class="fab fa-instagram"></i></a>
-      <a href=""><i class="fab fa-twitter"></i></a>
-    </div>
-    <small>&copy 2021 Alphayo Blog</small>
-  </footer>
+<div class="row tm-row tm-mt-100 tm-mb-75">
+  <div class="tm-prev-next-wrapper">
+      <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
+      <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
+  </div>
+  <div class="tm-paging-wrapper">
+      <span class="d-inline-block mr-3">Page</span>
+      <nav class="tm-paging-nav d-inline-block">
+        {{ $posts->links('pagination::default') }}
+      </nav>
+  </div>                
+</div> 
 </main>
+</div>
 @endsection
