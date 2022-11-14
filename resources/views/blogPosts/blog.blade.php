@@ -1,10 +1,8 @@
 @extends('layout')
 @section('main')
-<div class="container-fluid">
-<main class="tm-main">
   <!-- Search form -->
+  @include('includes.flash-message')
   <div class="row tm-row">
-    @include('includes.flash-message')
     <div class="col-12">
         <form method="" class="form-inline tm-mb-80 tm-search-form">                
             <input class="form-control tm-search-input" name="search" type="text" placeholder="Search..." aria-label="Search">
@@ -58,6 +56,4 @@
       </nav>
   </div>                
 </div> 
-</main>
-</div>
 @endsection

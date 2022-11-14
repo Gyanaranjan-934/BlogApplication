@@ -5,6 +5,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,13 +46,39 @@ Route::resource('/categories', CategoryController::class);
 
 //Comment
 Route::post('/posts/{post}/comments',[CommentsController::class,'store'])->name('comment.store');
-Route::delete('/comment/{comments}',[CommentsController::class,'destroy'])->name('commmet.destroy');
+Route::delete('/comment/{comments}',[CommentsController::class,'destroy'])->name('comment.destroy');
 
 //Logout
-Route::get('/logout', [BlogController::class,'logout']);
+Route::get('/logout', [BlogController::class,'logout'])->name('logout');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::prefix('admin')->middleware('auth','isAdmin')->group(function () {
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('admin.dashboard');
+    Route::get('category',[\App\Http\Controllers\Admin\CategoryController::class,'index']);
+    Route::get('add-category',[\App\Http\Controllers\Admin\CategoryController::class,'create']);
+    Route::post('add-category',[\App\Http\Controllers\Admin\CategoryController::class,'store']);
+    Route::get('edit-category/{category_id}',[\App\Http\Controllers\Admin\CategoryController::class,'edit']);
+    Route::put('update-category/{category_id}',[\App\Http\Controllers\Admin\CategoryController::class,'update']);
+    Route::get('delete-category/{category_id}',[\App\Http\Controllers\Admin\CategoryController::class,'destroy']);
+
+    Route::get('posts',[\App\Http\Controllers\Admin\PostController::class,'index']);
+    Route::get('users',[\App\Http\Controllers\Admin\UserController::class,'index']);
+    Route::get('edit-user/{user_id}',[\App\Http\Controllers\Admin\UserController::class,'edit']);
+    Route::put('update-user/{user_id}',[\App\Http\Controllers\Admin\UserController::class,'update']);
+
+    Route::get('delete-user/{user_id}',[\App\Http\Controllers\Admin\UserController::class,'destroy']);
+
+    Route::get('comments',[\App\Http\Controllers\Admin\CommentController::class,'index']);
+    Route::get('/view/{comment_id}',[\App\Http\Controllers\Admin\CommentController::class,'show'])->name('comment.show');
+    Route::delete('delete-comment/{comment_id}',[\App\Http\Controllers\Admin\CommentController::class,'destroy'])->name('admin.comment.destroy');
+
+});
+
+//Admin user manage
+Route::get('users',[App\Http\Controllers\Admin\UserController::class,'index']);
+Route::delete('users/{}',[App\Http\Controllers\Admin\UserController::class,'destroy']);

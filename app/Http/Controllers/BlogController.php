@@ -58,7 +58,7 @@ class BlogController extends Controller
         $body = $request->input('body');
 
         $imagePath =  'storage/' . $request -> file('image')->store('postImages','public');
-
+        // DB::insert('insert into posts (title,slug,user_id,category_id,imagePath,body,created_at,updated_at) values (?,?,?,?,?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)',[$title,$slug,$user_id,$category_id,$imagePath,$body]);
         $post = new Post();
         $post->title = $title;
         $post->category_id = $category_id;
@@ -74,7 +74,7 @@ class BlogController extends Controller
 
     public function edit(Post $post){
 
-        if (auth()->user()->id !== $post->user->id) {
+        if (auth()->user()->id !== $post->user->id && auth()->user()->role_as != '1' ) {
             abort(403);
         }
         $categories = Category::all();

@@ -11,6 +11,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/templatemo-xtra-blog.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <!--
     
 TemplateMo 553 Xtra Blog
@@ -42,44 +43,51 @@ https://templatemo.com/tm-553-xtra-blog
                             </a></li>
                         <li><a class="{{ Request::routeIs('blog.index') ? 'active' : '' }} tm-nav-link"
                                 href="{{ route('blog.index') }}">
-                                <i class="fas fa-home"></i>
+                                <i class="fa-solid fa-blog"></i>
                                 Blog
                             </a></li>
                         @auth
                             <li><a class="{{ Request::routeIs('blog.create') ? 'active' : '' }} tm-nav-link"
                                     href="{{ route('blog.create') }}">
-                                    <i class="fas fa-home"></i>
+                                    <i class="fa-regular fa-pen-to-square"></i>
                                     Create Blog
                                 </a></li>
                         @endauth
-                        <li><a href="{{ route('about') }}" class="tm-nav-link">
-                                <i class="fas fa-users"></i>
+                        <li><a href="{{ route('about') }}" class="{{ Request::routeIs('about') ? 'active' : '' }} tm-nav-link">
+                                <i class="fa-solid fa-address-card"></i>
                                 About Us
                             </a></li>
-                        <li><a href="{{ route('contact') }}" class="tm-nav-link">
-                                <i class="far fa-comments"></i>
+                        <li><a href="{{ route('contact') }}" class="{{ Request::routeIs('contact') ? 'active' : '' }} tm-nav-link">
+                                <i class="fa-solid fa-phone"></i>
                                 Contact Us
                             </a></li>
                         @guest
-                            <li><a href="{{ route('login') }}" class="tm-nav-link">
-                                    <i class="far fa-comments"></i>
+                            <li><a href="{{ route('login') }}" class="{{ Request::routeIs('login') ? 'active' : '' }} tm-nav-link">
+                                    <i class="fa-solid fa-right-to-bracket"></i>
                                     Log in
                                 </a></li>
-                            <li><a href="{{ route('register') }}" class="tm-nav-link">
-                                    <i class="far fa-comments"></i>
+                            <li><a href="{{ route('register') }}" class="{{ Request::routeIs('register') ? 'active' : '' }} tm-nav-link">
+                                    <i class="fa-solid fa-user-plus"></i>
                                     Register
                                 </a></li>
                         @endguest
                         @auth
-                            <li><a href="{{ route('dashboard') }}" class="tm-nav-link">
-                                    <i class="far fa-comments"></i>
+                            <li><a href="{{ route('dashboard') }}" class="{{ Request::routeIs('dashboard') ? 'active' : '' }} tm-nav-link">
+                                    <i class="fa-solid fa-chart-line"></i>
                                     Dashboard
                                 </a></li>
-                            <li><a href="{{ url('/logout') }}" class="tm-nav-link">
-                                    <i class="far fa-comments"></i>
+                            <li><a href="{{ url('/logout') }}" class="{{ Request::routeIs('logout') ? 'active' : '' }} tm-nav-link">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                     Logout
                                 </a></li>
+                            @if (Auth::user()->role_as == '1')
+                                <li><a href="{{ route('admin.dashboard') }}" class="{{ Request::routeIs('admin.dashboard') ? 'active' : '' }} tm-nav-link">
+                                        <i class="fa-solid fa-toolbox"></i>
+                                        Admin Dashboard
+                                    </a></li>
+                            @endif
                         @endauth
+
                     </ul>
                 </nav>
                 <div class="tm-mb-65">
@@ -96,71 +104,27 @@ https://templatemo.com/tm-553-xtra-blog
                         <i class="fab fa-linkedin tm-social-icon"></i>
                     </a>
                 </div>
-                <p class="tm-mb-80 pr-5 text-white">
-                    Xtra Blog is a multi-purpose HTML template from TemplateMo website. Left side is a sticky menu bar.
-                    Right side content will scroll up and down.
-                </p>
+
             </div>
         </header>
-        <!-- Menu Button -->
-        {{-- <div class="menuButton">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div> --}}
-        <div class="tm-mb-65">
-            <a rel="nofollow" href="https://fb.com/templatemo" class="tm-social-link">
-                <i class="fab fa-facebook tm-social-icon"></i>
-            </a>
-            <a href="https://twitter.com" class="tm-social-link">
-                <i class="fab fa-twitter tm-social-icon"></i>
-            </a>
-            <a href="https://instagram.com" class="tm-social-link">
-                <i class="fab fa-instagram tm-social-icon"></i>
-            </a>
-            <a href="https://linkedin.com" class="tm-social-link">
-                <i class="fab fa-linkedin tm-social-icon"></i>
-            </a>
-        </div>
+
         <!-- main -->
-        @yield('main')
-
-        <!-- Main footer -->
-        {{-- <footer class="main-footer">
-        <div>
-          <a href=""><i class="fab fa-facebook-f"></i></a>
-          <a href=""><i class="fab fa-instagram"></i></a>
-          <a href=""><i class="fab fa-twitter"></i></a>
+        <div class="container-fluid">
+            <main class="tm-main">
+                @yield('main')
+                <footer class="row tm-row">
+                    <hr class="col-12">
+                    <div class="col-md-6 col-12 tm-color-gray">
+                        Design: <a rel="nofollow" target="_parent" href="#"
+                            class="tm-external-link">FreeTalks</a>
+                    </div>
+                    <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                        Copyright 2020 FreeTalks, Inc.
+                    </div>
+                </footer>
+            </main>
         </div>
-        <small>&copy 2021 Alphayo Blog</small>
-      </footer> --}}
-        <footer class="row tm-row">
-            <hr class="col-12">
-            <div class="col-md-6 col-12 tm-color-gray">
-                Design: <a rel="nofollow" target="_parent" href="https://templatemo.com"
-                    class="tm-external-link">TemplateMo</a>
-            </div>
-            <div class="col-md-6 col-12 tm-color-gray tm-copyright">
-                Copyright 2020 Xtra Blog Company Co. Ltd.
-            </div>
-        </footer>
     </div>
-
-    {{-- <!-- Click events to menu and close buttons using javaascript-->
-    <script>
-      document
-        .querySelector(".menuButton")
-        .addEventListener("click", function () {
-          document.querySelector(".sidebar").style.width = "100%";
-          document.querySelector(".sidebar").style.zIndex = "5";
-        });
-
-      document
-        .querySelector(".closeButton")
-        .addEventListener("click", function () {
-          document.querySelector(".sidebar").style.width = "0";
-        });
-    </script> --}}
     <script src="js/jquery.min.js"></script>
     <script src="js/templatemo-script.js"></script>
     @yield('scripts')

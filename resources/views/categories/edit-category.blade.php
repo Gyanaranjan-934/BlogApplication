@@ -4,7 +4,7 @@
 <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
 @endsection
 @section('main')
-<main class="container" style="background-color:#fff">
+{{-- <main class="container" style="background-color:#fff"> --}}
     <section id="contact-us">
         <h1 style="padding-top: 50px;">Edit Category</h1>
         @include('includes.flash-message')
@@ -30,7 +30,9 @@
             <a href="{{route('categories.index')}}">Category List <span>&#8594;</span></a>
         </div>
     </section>
-</main>
+{{-- </main> --}}
+    </main>
+</div>
 @endsection
 
 @section('scripts')

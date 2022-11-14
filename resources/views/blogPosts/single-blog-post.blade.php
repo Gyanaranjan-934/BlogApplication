@@ -77,87 +77,82 @@
 {{-- </main> --}}
 {{-- @endsection --}}
 @section('main')
-    <div class="container-fluid">
-        <main class="tm-main">
-            <div class="row tm-row">
-                <div class="col-12">
-                    <hr class="tm-hr-primary tm-mb-55">
-                    <img width="890" height="535" src="{{ asset($post->imagePath) }}" alt="image" class="tm-mb-40">
-                </div>
+    <div class="row tm-row">
+        <div class="col-12">
+            <hr class="tm-hr-primary tm-mb-55">
+            <img width="890" height="535" src="{{ asset($post->imagePath) }}" alt="image" class="tm-mb-40">
+        </div>
+        @auth()
+        @if (auth()->user()->id === $post->user->id)
+            <div class="post-buttons">
+                <a href="{{ route('blog.edit', $post) }}">Edit</a>
+                <form action="{{ route('blog.destroy', $post) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <input type="submit" value=" Delete">
+                </form>
             </div>
-            @auth()
-                @if (auth()->user()->id === $post->user->id)
-                    <div class="post-buttons">
-                        <a href="{{ route('blog.edit', $post) }}">Edit</a>
-                        <form action="{{ route('blog.destroy', $post) }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <input type="submit" value=" Delete">
-                        </form>
-                    </div>
-                @endif
+            @endif
             @endauth
-            <div class="row tm-row">
-                <div class="col-lg-8 tm-post-col">
-                    <div class="tm-post-full">
-                        <div class="mb-4">
-                            <h2 class="pt-2 tm-color-primary tm-post-title">{{ $post->title }}</h2>
-                            <p class="tm-mb-40">{{ $post->created_at->diffForHumans() }} {{ $post->user->name }}</p>
-                            {!! $post->body !!}
-                        </div>
-
-                        <!-- Comments -->
-                        <div>
-                            <h2 class="tm-color-primary tm-post-title">Comments</h2>
-                            <hr class="tm-hr-primary tm-mb-45">
-                            @foreach ($comments as $comment)
-                                <div class="tm-comment tm-mb-45">
-                                    <figure class="tm-comment-figure">
-                                        <figcaption class="tm-color-primary text-center">{{ $comment->author }}</figcaption>
-                                    </figure>
-                                    <div>
-                                        <p>{{ $comment->text }}</p>
-                                        <div class="d-flex justify-content-between">
-                                            <span
-                                                class="tm-color-primary">{{ $comment->created_at->diffForHumans() }}</span>
-                                        </div>
-                                    </div>
-                            @endforeach
-                        </div>
-                        <form action="/posts/{{ $post->id }}/comments" method="POST" class="mb-0">
-                            @csrf
-                            <label for="author" class="mt-6 text-sm font-medium text-gray-700">Text</label>
-                            <textarea name="text" class="mt-1 py-2 px-3 block w-full borded border-gray-400 rounded-md shadow-sm" required>{{ old('text') }}</textarea>
-                            <input class="tm-btn tm-btn-primary tm-btn-small" type="submit" value="Submit" />
-                        </form>
-                    </div>
+    </div>
+    <div class="row tm-row">
+        <div class="col-lg-8 tm-post-col">
+            <div class="tm-post-full">
+                <div class="mb-4">
+                    <h2 class="pt-2 tm-color-primary tm-post-title">{{ $post->title }}</h2>
+                    <p class="tm-mb-40">{{ $post->created_at->diffForHumans() }} {{ $post->user->name }}</p>
+                    {!! $post->body !!}
                 </div>
-            </div>
-            <aside class="col-lg-4 tm-aside-col">
-                <div class="tm-post-sidebar">
-                    <hr class="mb-3 tm-hr-primary">
-                    <h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
-                    <ul class="tm-mb-75 pl-5 tm-category-list">
-                        @foreach ($categories as $category)
-                            <li><a class="tm-color-primary"
-                                    href="{{ route('blog.index', ['category' => $category->name]) }}">{{ $category->name }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                    <hr class="mb-3 tm-hr-primary">
-                    <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
 
-                    @foreach ($relatedPosts as $relatedPost)
-                        <a href="{{ route('blog.show', $post) }}" class="d-block tm-mb-40">
-                            <figure>
-                                <img src="{{ asset($relatedPost->imagePath) }}" alt="Image" class="mb-3 img-fluid">
-                                <figcaption class="tm-color-primary">{{ $relatedPost->title }}</figcaption>
+                <!-- Comments -->
+                <div>
+                    <h2 class="tm-color-primary tm-post-title">Comments</h2>
+                    <hr class="tm-hr-primary tm-mb-45">
+                    @foreach ($comments as $comment)
+                        <div class="tm-comment tm-mb-45">
+                            <figure class="tm-comment-figure">
+                                <figcaption class="tm-color-primary text-center">{{ $comment->author }}</figcaption>
                             </figure>
-                        </a>
+                            <div>
+                                <p>{{ $comment->text }}</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="tm-color-primary">{{ $comment->created_at->diffForHumans() }}</span>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
-                </div>
-            </aside>
+                <form action="/posts/{{ $post->id }}/comments" method="POST" class="mb-0">
+                    @csrf
+                    <label for="author" class="mt-6 text-sm font-medium text-gray-700">Text</label>
+                    <textarea name="text" class="mt-1 py-2 px-3 block w-full borded border-gray-400 rounded-md shadow-sm" required>{{ old('text') }}</textarea>
+                    <input class="tm-btn tm-btn-primary tm-btn-small" type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
     </div>
-    </main>
-    </div>
+    <aside class="col-lg-4 tm-aside-col">
+        <div class="tm-post-sidebar">
+            <hr class="mb-3 tm-hr-primary">
+            <h2 class="mb-4 tm-post-title tm-color-primary">Categories</h2>
+            <ul class="tm-mb-75 pl-5 tm-category-list">
+                @foreach ($categories as $category)
+                    <li><a class="tm-color-primary"
+                            href="{{ route('blog.index', ['category' => $category->name]) }}">{{ $category->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
+            <hr class="mb-3 tm-hr-primary">
+            <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
+
+            @foreach ($relatedPosts as $relatedPost)
+                <a href="{{ route('blog.show', $post) }}" class="d-block tm-mb-40">
+                    <figure>
+                        <img src="{{ asset($relatedPost->imagePath) }}" alt="Image" class="mb-3 img-fluid">
+                        <figcaption class="tm-color-primary">{{ $relatedPost->title }}</figcaption>
+                    </figure>
+                </a>
+            @endforeach
+        </div>
+    </aside>
+</div>
 @endsection

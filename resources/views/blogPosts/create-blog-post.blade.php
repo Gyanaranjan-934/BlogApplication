@@ -3,8 +3,6 @@
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 @endsection
 @section('main')
-<div class="container-fluid">
-    <main class="tm-main">
     <section id="contact-us">
         <h1 style="padding-top: 50px;">Create New Post!</h1>
         
@@ -54,8 +52,6 @@
         </div>
 
     </section>
-</main>
-</div>
 @endsection
 
 @section('scripts')

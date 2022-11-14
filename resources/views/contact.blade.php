@@ -1,7 +1,5 @@
 @extends('layout')
 @section('main')
-<div class="container-fluid">
-  <main class="tm-main">
       <div class="row tm-row tm-mb-120">
           <div class="col-12">
               <h2 class="tm-color-primary tm-post-title tm-mb-60">Contact Us</h2>
@@ -81,15 +79,5 @@
                   </li>
               </ul>
           </div>
-      </div>      
-      <footer class="row tm-row">
-          <div class="col-md-6 col-12 tm-color-gray">
-              Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
-          </div>
-          <div class="col-md-6 col-12 tm-color-gray tm-copyright">
-              Copyright 2020 Xtra Blog Company Co. Ltd.
-          </div>
-      </footer>
-  </main>
-</div>
+      </div>
 @endsection

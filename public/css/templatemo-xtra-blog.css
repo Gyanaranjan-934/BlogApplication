@@ -55,8 +55,8 @@ hr {
 }
 
 .tm-site-header {
-    margin-top: 50px;
-    margin-bottom: 115px;
+    margin-top: 0px;
+    margin-bottom: 20px;
 }
 
 .tm-site-logo {
@@ -159,6 +159,7 @@ ul {
 .navbar-toggler { display: none; }
 
 .tm-search-form {
+    
     display: flex;
     align-items: center;
     justify-content: flex-end;

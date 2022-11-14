@@ -1,5 +1,7 @@
 
-
+.active{
+  color: #494949;
+}
 
 /* Categories list */
 .categories-list {

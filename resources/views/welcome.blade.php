@@ -1,8 +1,6 @@
 @extends('layout')
 @section('main')
     <!-- main -->
-    <div class="container-fluid">
-      <main class="tm-main">
         <h1>Explore the World with the Blogs</h1>
         <div class="row tm-row">
       @forelse ($posts as $post)
@@ -27,7 +25,5 @@
       @empty
       <p>No articles published</p>
       @endforelse
-    </div>
-      </main>
     </div>
 @endsection
