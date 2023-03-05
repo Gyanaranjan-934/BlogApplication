@@ -13,7 +13,7 @@
                 @csrf
                 <!-- Title -->
                 <label for="title"><span>Title</span></label>
-                <input type="text" id="title" name="title" value="{{old('title')}}" />
+                <input type="text" id="title" name="title" value="{{ old('title') }}" />
                 @error('title')
                 {{-- The $attributeValue field is/must be $validationRule --}}
                 <p style="color: red; margin-bottom:25px;">{{ $message }}</p>

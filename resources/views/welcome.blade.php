@@ -1,7 +1,7 @@
 @extends('layout')
 @section('main')
     <!-- main -->
-        <h1>Explore the World with the Blogs</h1>
+        <h1>Publish your innovations</h1>
         <div class="row tm-row">
       @forelse ($posts as $post)
         <article class="col-12 col-md-6 tm-post">
@@ -14,7 +14,7 @@
               <a class="tm-pt-30 tm-color-primary tm-post-title" href="{{route('blog.show',$post)}}">{{$post->title}}</a>
           </a>
           <div class="d-flex justify-content-between tm-pt-45">
-              <span class="tm-color-primary">{{$post->created_at->diffForHumans()}}</span>
+              <span class="tm-color-primary">at {{$post->created_at->format('d-m-Y')}}</span>
           </div>
           <hr>
           <div class="d-flex justify-content-between">

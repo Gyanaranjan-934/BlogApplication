@@ -4,7 +4,7 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="row row-cols-1 row-cols-md-1 g-4">
             <div class="col">
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">

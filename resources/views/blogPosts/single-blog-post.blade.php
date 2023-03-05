@@ -77,30 +77,31 @@
 {{-- </main> --}}
 {{-- @endsection --}}
 @section('main')
-    <div class="row tm-row">
-        <div class="col-12">
+<div class="row tm-row">
+    <div class="col-12">
+            <h2 class="pt-2 tm-color-primary tm-post-title">{{ $post->title }}</h2>
             <hr class="tm-hr-primary tm-mb-55">
-            <img width="890" height="535" src="{{ asset($post->imagePath) }}" alt="image" class="tm-mb-40">
+            <img width="100%" height="535" src="{{ asset($post->imagePath) }}" alt="image" class="tm-mb-40">
         </div>
         @auth()
         @if (auth()->user()->id === $post->user->id)
             <div class="post-buttons">
-                <a href="{{ route('blog.edit', $post) }}">Edit</a>
+                <a class="btn btn-primary" href="{{ route('blog.edit', $post) }}">Edit</a> &nbsp;&nbsp;&nbsp;
                 <form action="{{ route('blog.destroy', $post) }}" method="post">
                     @csrf
                     @method('delete')
-                    <input type="submit" value=" Delete">
+                    <input class="btn btn-danger" type="submit" value=" Delete">
                 </form>
             </div>
             @endif
             @endauth
     </div>
+    <hr class="tm-hr-primary tm-mb-45">
     <div class="row tm-row">
         <div class="col-lg-8 tm-post-col">
             <div class="tm-post-full">
                 <div class="mb-4">
-                    <h2 class="pt-2 tm-color-primary tm-post-title">{{ $post->title }}</h2>
-                    <p class="tm-mb-40">{{ $post->created_at->diffForHumans() }} {{ $post->user->name }}</p>
+                    <p class="tm-mb-40">on   {{ $post->created_at->format('d-m-Y')}}   by   {{ $post->user->name }}</p>
                     {!! $post->body !!}
                 </div>
 
@@ -145,7 +146,7 @@
             <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
 
             @foreach ($relatedPosts as $relatedPost)
-                <a href="{{ route('blog.show', $post) }}" class="d-block tm-mb-40">
+                <a href="{{ route('blog.show', $relatedPost) }}" class="d-block tm-mb-40">
                     <figure>
                         <img src="{{ asset($relatedPost->imagePath) }}" alt="Image" class="mb-3 img-fluid">
                         <figcaption class="tm-color-primary">{{ $relatedPost->title }}</figcaption>

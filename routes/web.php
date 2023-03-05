@@ -33,6 +33,8 @@ Route::get('/blog/{post}/edit', [BlogController::class,'edit'])->name('blog.edit
 Route::put('/blog/{post}', [BlogController::class,'update'])->name('blog.update'); 
 // delete single page
 Route::delete('/blog/{post}', [BlogController::class,'destroy'])->name('blog.destroy'); 
+//show own posts
+Route::get('/blogs/{id}', [BlogController::class,'showCreated'])->name('blog.showown');
 //store page
 Route::post('/blog', [BlogController::class,'store'])->name('blog.store');
 //about page

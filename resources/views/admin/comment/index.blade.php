@@ -4,10 +4,10 @@
 <div class="container-fluid px-4">
     <div class="card">
         <div class="card-body">
+            <h4>View Comments</h4> 
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Comment id</th>
                         <th>Comment author</th>
                         <th>View</th>
                         <th>Delete</th>
@@ -16,7 +16,6 @@
                 <tbody>
                     @foreach ($comments as $comment)
                         <tr>
-                            <td>{{ $comment->id }}</td>
                             <td> {{ $comment->author }} </td>
                             <td> 
                                 {{-- <a href="{{ url('admin/view/'. $comment->id , $comment ) }}" class="btn btn-secondary">View</a> --}}

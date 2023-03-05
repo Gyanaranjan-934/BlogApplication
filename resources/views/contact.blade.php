@@ -39,22 +39,20 @@
           </div>
           <div class="col-lg-5 tm-contact-right">
               <address class="mb-4 tm-color-gray">
-                  120 Lorem ipsum dolor sit amet,
-                  consectetur adipiscing 10550
+                  Mega Hostel 1 for Boys, National Institute of Technology Calicut,
+                  Kozhikode, Kerala,673601
               </address>
               <span class="d-block">
                   Tel:
-                  <a href="tel:060-070-0980" class="tm-color-gray">060-070-0980</a>
+                  <a href="tel:060-070-0980" class="tm-color-gray">+91-8114694934</a>
               </span>
               <span class="mb-4 d-block">
                   Email:
-                  <a href="mailto:info@company.com" class="tm-color-gray">info@company.com</a>
+                  <a href="mailto:info@company.com" class="tm-color-gray">freetalks@gmail.com</a>
               </span>
               <p class="mb-5 tm-line-height-short">
-                  Maecenas eu mi eu dui cursus
-                  consequat non eu metus. Morbi ac
-                  turpis eleifend, commodo purus
-                  eget, commodo mauris.
+                  The company is founded in 2022 by 4 students from the National Institute of Technology Calicut
+                  They developed the application for the project purpose . This project will be developed to a commercial application for the company later.
               </p>
               <ul class="tm-social-links">
                   <li class="mb-2">

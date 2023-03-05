@@ -4,10 +4,10 @@
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
 
-                <a href="" style="pointer-events: none; opacity:0.5;">&laquo;</a>
+                <a href="" style="color: teal" style="pointer-events: none; opacity:0.5;">&laquo;</a>
             @else
         
-                <a href="{{ $paginator->previousPageUrl() }}">&laquo;</a>
+                <a href="{{ $paginator->previousPageUrl() }}" style="color: teal">&laquo;</a>
             @endif
 
             {{-- Pagination Elements --}}
@@ -15,7 +15,7 @@
                 {{-- "Three Dots" Separator --}}
                 @if (is_string($element))
         
-                    <a href="" style="pointer-events: none;">{{ $element }}</a>
+                    <a href="" style="pointer-events: none;border: 1px solid #000000">{{ $element }}</a>
                 @endif
 
                 
@@ -24,10 +24,10 @@
                     @foreach ($element as $page => $url)
                         @if ($page == $paginator->currentPage())
                             
-                            <a href="" class="active">{{ $page }}</a>
+                            <a href="" style="color: black;border: 1px solid #000000" class="active">{{ $page }}</a>
                         @else
                            
-                            <a href="{{ $url }}">{{ $page }}</a>
+                            <a href="{{ $url }}" style="color: teal;border: 1px solid teal">{{ $page }}</a>
                         @endif
                     @endforeach
                 @endif
@@ -37,11 +37,11 @@
             @if ($paginator->hasMorePages())
                
 
-                <a href="{{ $paginator->nextPageUrl() }}">&raquo;</a>
+                <a href="{{ $paginator->nextPageUrl() }}" style="color: teal">&raquo;</a>
             @else
             
 
-                <a href="" style="pointer-events: none; opacity:0.5;">&raquo;</a>
+                <a href=""  style="pointer-events: none; opacity:0.5; color:teal">&raquo;</a>
             @endif
             </div>
 

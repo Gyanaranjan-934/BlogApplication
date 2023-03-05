@@ -36,7 +36,7 @@ hr {
     left: 0;
     bottom: 0;
     z-index: 100;
-    width: 400px;
+    width: 300px;
     overflow-y: visible;     
 }
 
@@ -60,10 +60,12 @@ hr {
 }
 
 .tm-site-logo {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    background-color: white;    
+    /* width: 75px;
+    height: 75px; */
+    width: 40%;
+    height: 30%;
+    /* border-radius: 50%; */
+    /* background-color: white;     */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,14 +74,14 @@ hr {
 .tm-site-logo i { color: #0CC; }
 
 .tm-main {
-    margin-left: 400px;
+    margin-left: 350px;
     padding: 0px 54px 90px;
 }
 
 .tm-post { max-width: 470px; }
 
 .tm-row {
-    max-width: 980px;
+    /* max-width: 980px; */
     justify-content: space-between;
 }
 
@@ -137,24 +139,27 @@ ul {
 
 .tm-social-link {
     display: inline-block;
-    background-color: white;    
+    /* background-color: white;     */
+    
     font-size: 1.4rem;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     text-align: center;
     padding-top: 8px; 
+    padding-bottom: 8px; 
     margin-right: 15px;   
     margin-bottom: 15px;
 }
 
 .tm-social-icon { 
-    color: #0CC;    
+    color: white;   
+
     transition: all 0.3s ease;
 }
 
-.tm-social-link:hover .tm-social-icon.fa-facebook { color: #3b5998; }
+.tm-social-link:hover .tm-social-icon.fa-facebook { color: rgb(58, 41, 237); }
 .tm-social-link:hover .tm-social-icon.fa-twitter { color: #00acee; }
-.tm-social-link:hover .tm-social-icon.fa-instagram { color: #3f729b; }
+.tm-social-link:hover .tm-social-icon.fa-instagram { color: #dc3686; }
 .tm-social-link:hover .tm-social-icon.fa-linkedin { color: #0e76a8; }
 .navbar-toggler { display: none; }
 
@@ -212,7 +217,7 @@ ul {
 .effect-lily img {
 	max-width: none;
 	width: -webkit-calc(100% + 50px);
-	width: calc(100% + 50px);
+	width: calc(100% +50px);
 	opacity: 0.7;
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 	transition: opacity 0.35s, transform 0.35s;
@@ -354,7 +359,7 @@ figcaption { line-height: 1.4; }
 
 .tm-post-sidebar {
     max-width: 280px;
-    margin-left: auto;
+    margin-left: 90px;
     margin-right: 0;
 }
 

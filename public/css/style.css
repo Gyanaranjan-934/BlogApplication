@@ -68,6 +68,7 @@
   color: white;
   padding: 10px 20px;
   display: inline-block;
+  font-size: 15px;
 }
 
 .create-categories a,
@@ -154,7 +155,7 @@
   display: flex;
 }
 
-.post-buttons a {
+/* .post-buttons a {
   padding: 10px 20px;
   background-color: #4caf50;
   margin-right: 10px;
@@ -171,7 +172,7 @@
   border: none;
   font-size: 16px;
   cursor: pointer;
-}
+} */
 
 /* Single Blog
 .single-blog-post h1 {
@@ -415,4 +416,7 @@ textarea {
   .categories ul li:nth-of-type(4) {
     margin-bottom: 25px;
   }
+}
+.admin-container{
+  padding: 100px;
 }

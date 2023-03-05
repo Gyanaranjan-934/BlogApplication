@@ -15,23 +15,23 @@
 <div class="categories">
   <ul>
     @foreach ($categories as $category)
-      <li><a href="{{route('blog.index', ['category' => $category->name] )}}">{{$category->name}}</a></li>
+      <li><a href="{{ route('blog.index', ['category' => $category->name] )}}">{{$category->name}}</a></li>
     @endforeach
   </ul>
 </div>
 <div class="row tm-row">
 @forelse ($posts as $post)
   <article class="col-12 col-md-6 tm-post">
-    <hr class="tm-hr-primary">
+    {{-- <hr class="tm-hr-primary"> --}}
     <a href="{{route('blog.show',$post)}}" class="effect-lily tm-post-link tm-pt-60">
         <div class="tm-post-link-inner">
-            <img src="{{asset($post->imagePath)}}" alt="Image" class="img-fluid">                            
+            <img src="{{asset($post->imagePath)}}" alt="Image" class="img-fluid" height="260px" width="490px">                            
         </div>
-        <span class="position-absolute tm-new-badge">New</span>
+        {{-- <span class="position-absolute tm-new-badge">New</span> --}}
         <a class="tm-pt-30 tm-color-primary tm-post-title" href="{{route('blog.show',$post)}}">{{$post->title}}</a>
     </a>
     <div class="d-flex justify-content-between tm-pt-45">
-        <span class="tm-color-primary">{{$post->created_at->diffForHumans()}}</span>
+        <span class="tm-color-primary">created at {{$post->created_at->format('d-m-Y')}}</span>
     </div>
     <hr>
     <div class="d-flex justify-content-between">
@@ -44,13 +44,8 @@
 @endforelse
 </div>
 
-<div class="row tm-row tm-mt-100 tm-mb-75">
-  <div class="tm-prev-next-wrapper">
-      <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
-      <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
-  </div>
+<div class="row tm-row tm-mt-50 tm-mb-75">
   <div class="tm-paging-wrapper">
-      <span class="d-inline-block mr-3">Page</span>
       <nav class="tm-paging-nav d-inline-block">
         {{ $posts->links('pagination::default') }}
       </nav>

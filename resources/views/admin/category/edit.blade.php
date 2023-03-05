@@ -6,10 +6,6 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Category</li>
         </ol>
-        <div class="row">
-
-        </div>
-
         <div class="card">
             <div class="card-header">
                 <h1 class="mt-4">Add Category</h1>

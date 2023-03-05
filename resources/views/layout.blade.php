@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xtra Blog</title>
+    <title>FreeTalks</title>
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}"> <!-- https://fontawesome.com/ -->
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <!-- https://fonts.google.com/ -->
@@ -31,8 +31,9 @@ https://templatemo.com/tm-553-xtra-blog
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="tm-site-header">
-                    <div class="mb-3 mx-auto tm-site-logo"><i class="fas fa-times fa-2x"></i></div>
-                    <h1 class="text-center">Calicut Blog</h1>
+                    <div class="mb-3 mx-auto tm-site-logo">
+                        <x-application-logo1/>
+                    </div>
                 </div>
                 <nav class="tm-nav" id="tm-nav">
                     <ul>
@@ -83,24 +84,24 @@ https://templatemo.com/tm-553-xtra-blog
                             @if (Auth::user()->role_as == '1')
                                 <li><a href="{{ route('admin.dashboard') }}" class="{{ Request::routeIs('admin.dashboard') ? 'active' : '' }} tm-nav-link">
                                         <i class="fa-solid fa-toolbox"></i>
-                                        Admin Dashboard
+                                        Admin
                                     </a></li>
                             @endif
                         @endauth
 
                     </ul>
                 </nav>
-                <div class="tm-mb-65">
-                    <a rel="nofollow" href="https://fb.com/templatemo" class="tm-social-link">
+                <div>
+                    <a href="https://fb.com" target="_blank" class="tm-social-link">
                         <i class="fab fa-facebook tm-social-icon"></i>
                     </a>
-                    <a href="https://twitter.com" class="tm-social-link">
+                    <a href="https://twitter.com" target="_blank" class="tm-social-link">
                         <i class="fab fa-twitter tm-social-icon"></i>
                     </a>
-                    <a href="https://instagram.com" class="tm-social-link">
+                    <a href="https://instagram.com" target="_blank" class="tm-social-link">
                         <i class="fab fa-instagram tm-social-icon"></i>
                     </a>
-                    <a href="https://linkedin.com" class="tm-social-link">
+                    <a href="https://linkedin.com" target="_blank" class="tm-social-link">
                         <i class="fab fa-linkedin tm-social-icon"></i>
                     </a>
                 </div>

@@ -33,10 +33,4 @@
             </table>
         </div>
     </div>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Category</li>
-    </ol>
-    <div class="row">
-
-    </div>
 @endsection

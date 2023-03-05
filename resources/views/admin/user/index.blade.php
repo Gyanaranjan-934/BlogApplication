@@ -4,8 +4,7 @@
 <div class="container-fluid px-4">
     <div class="card">
         <div class="card-header">
-            <h4>View Category 
-                <a href="{{ route('register') }}" class="btn btn-primary btn-sm float-end">Add User</a> </h4>
+            <h4>View Users</h4>
         </div>
         <div class="card-body">
             <table class="table table-bordered">
@@ -15,7 +14,6 @@
                         <th>E mail</th>
                         <th>Role</th>
                         <th>Edit</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,20 +25,11 @@
                             <td>
                                 <a href="{{ url('admin/edit-user/'.$item->id) }}" class="btn btn-primary">Edit</a>
                             </td>
-                            <td>
-                                <a href="{{ url('admin/delete-user/'.$item->id) }}" class="btn btn-danger">Delete</a>
-                            </td>
                             
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-    </div>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Category</li>
-    </ol>
-    <div class="row">
-
     </div>
 @endsection

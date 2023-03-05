@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Dashboard') }}</title>
+    <title>{{ config('app.name', 'FreeTalks') }}</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -19,7 +19,8 @@
 </head>
 
 <body>
-    <div id="layoutSidenav">
+    <div class="admin-container">
+    <div id="layoutSidenav" >
         @include('layouts.inc.admin-sidebar')
         <div id="layoutSidenav_content">
             <main>
@@ -27,6 +28,8 @@
             </main>
             {{-- @include('layouts.inc.admin-footer') --}}
         </div>
+    </div>
+    @include('layouts.inc.admin-footer')
     </div>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"  crossorigin="anonymous"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
